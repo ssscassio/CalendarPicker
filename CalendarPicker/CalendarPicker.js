@@ -365,21 +365,47 @@ var HeaderControls = React.createClass({
   }
 });
 
+var ConfirmButton = React.createClass({
+  propTypes: {
+    confirmButtonText: React.PropTypes.string,
+    onConfirm: React.PropTypes.func.isRequired,
+    buttonStyle: Text.propTypes.style
+  },
+  onConfirm(date) {
+    this.props.onConfirm(date);
+  },
+
+  render(){
+    var buttonStyle = this.props.buttonStyle;
+    
+    return (
+      <TouchableOpacity onPress={this.onConfirm} style={styles.confirmButtonWrapper}>
+        <Text style={[styles.confirmButton, buttonStyle]}>{this.props.buttonText || 'OK'}</Text>
+      </TouchableOpacity>
+    )
+  }
+});
+
+
 var CalendarPicker = React.createClass({
   propTypes: {
     maxDate: React.PropTypes.instanceOf(Date),
     minDate: React.PropTypes.instanceOf(Date),
     selectedDate: React.PropTypes.instanceOf(Date).isRequired,
     onDateChange: React.PropTypes.func,
+    onConfirm: React.PropTypes.func,
     screenWidth: React.PropTypes.number,
     startFromMonday: React.PropTypes.bool,
     weekdays: React.PropTypes.array,
     months: React.PropTypes.array,
     previousTitle: React.PropTypes.string,
     nextTitle: React.PropTypes.string,
+    confirmButtonText: React.PropTypes.string,
     selectedDayColor: React.PropTypes.string,
     selectedDayTextColor: React.PropTypes.string,
     scaleFactor: React.PropTypes.number,
+    buttonStyle: Text.propTypes.style,
+    confirmButtonStyle: View.propTypes.style,
     textStyle: Text.propTypes.style
   },
   getDefaultProps() {
@@ -440,6 +466,18 @@ var CalendarPicker = React.createClass({
     this.props.onDateChange(date);
   },
 
+  onConfirm(){
+    var {
+      day,
+      month,
+      year
+    } = this.state,
+    date = new Date(year, month, day);
+
+    this.setState({date: date});
+    this.props.onConfirm(date);
+  },
+
   render() {
     return (
       <View style={styles.calendar}>
@@ -473,6 +511,15 @@ var CalendarPicker = React.createClass({
           selectedDayColor={this.props.selectedDayColor}
           selectedDayTextColor={this.props.selectedDayTextColor}
           textStyle={this.props.textStyle} />
+
+          {this.props.withConfirmButton?
+            <ConfirmButton
+              buttonText={this.props.confirmButtonText}
+              onConfirm={this.onConfirm}
+              buttonStyle={this.props.confirmButtonStyle}
+              />
+              :null
+          }
       </View>
     );
   }

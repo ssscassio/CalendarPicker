@@ -79,6 +79,19 @@ var styles = StyleSheet.create({
 
   weekRow: {
     flexDirection: 'row'
+  },
+
+  confirmButtonWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    paddingTop: 5,
+    paddingBottom: 3,
+  },
+
+  confirmButton: {
+    color: 'red',
+    textAlign: 'center'
   }
 });
 

@@ -29,6 +29,10 @@ CalendarPicker2 = React.createClass({
     this.setState({ date: date });
   },
 
+  onConfirm: function(date) {
+    this.setState({ date: date });
+    alert(date);
+  },
   render: function() {
     return (
       <View style={styles.container}>
@@ -45,6 +49,8 @@ CalendarPicker2 = React.createClass({
           selectedDayColor={'#E12518'}
           textStyle={styles.calendarTextStyle}
           selectedDayTextColor={'#FFFFFF'}
+          withConfirmButton
+          onConfirm={this.onConfirm}
                 style={{}} />
 
         <Text style={styles.selectedDate}> Date: { this.state.date.toString() } </Text>
