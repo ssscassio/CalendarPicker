@@ -118,6 +118,20 @@ function makeStyles(scaler) {
 
     disabledTextColor: {
       color: '#BBBBBB'
+    },
+
+    confirmButtonWrapper: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'row',
+      padding:5,
+      height: 40,
+      flex:1
+    },
+
+    confirmButton: {
+      color: '#00ff00',
+      textAlign: 'center'
     }
   };
 }

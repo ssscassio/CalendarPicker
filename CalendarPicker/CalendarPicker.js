@@ -367,20 +367,22 @@ var HeaderControls = React.createClass({
 
 var ConfirmButton = React.createClass({
   propTypes: {
-    confirmButtonText: React.PropTypes.string,
+    buttonText: React.PropTypes.string,
     onConfirm: React.PropTypes.func.isRequired,
-    buttonStyle: Text.propTypes.style
+    buttonTextStyle: Text.propTypes.style,
+    buttonStyle: View.propTypes.style
   },
   onConfirm(date) {
     this.props.onConfirm(date);
   },
 
   render(){
+    var buttonTextStyle = this.props.buttonTextStyle;
     var buttonStyle = this.props.buttonStyle;
-    
+
     return (
-      <TouchableOpacity onPress={this.onConfirm} style={styles.confirmButtonWrapper}>
-        <Text style={[styles.confirmButton, buttonStyle]}>{this.props.buttonText || 'OK'}</Text>
+      <TouchableOpacity onPress={this.onConfirm} style={[styles.confirmButtonWrapper, buttonStyle]}>
+        <Text style={[styles.confirmButton, buttonTextStyle]}>{this.props.buttonText || 'OK'}</Text>
       </TouchableOpacity>
     )
   }
@@ -404,9 +406,8 @@ var CalendarPicker = React.createClass({
     selectedDayColor: React.PropTypes.string,
     selectedDayTextColor: React.PropTypes.string,
     scaleFactor: React.PropTypes.number,
-    buttonStyle: Text.propTypes.style,
     confirmButtonStyle: View.propTypes.style,
-    textStyle: Text.propTypes.style
+    confirmTextStyle: Text.propTypes.style
   },
   getDefaultProps() {
     return {
@@ -516,6 +517,7 @@ var CalendarPicker = React.createClass({
             <ConfirmButton
               buttonText={this.props.confirmButtonText}
               onConfirm={this.onConfirm}
+              buttonTextStyle={this.props.confirmTextStyle}
               buttonStyle={this.props.confirmButtonStyle}
               />
               :null
