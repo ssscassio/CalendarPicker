@@ -5,10 +5,14 @@ Calendar Picker Component for React Native [![Build Status](https://travis-ci.or
 This is a Calendar Picker Component for React Native
 ![alt tag](https://raw.github.com/stephy/CalendarPicker/master/calendarPicker.gif)
 
-To use the calendar you just need to:
+To use the calendar you just need to add the dependence to you package.json:
 
-	npm install react-native-calendar-picker
+    "react-native-calendar-picker": "https://github.com/ssscassio/CalendarPicker/tarball/master",
 
+And do:
+
+    npm install
+    
 How to use it:
 ```js
 import React, { Component } from 'react';
@@ -42,7 +46,13 @@ CalendarPicker2 = React.createClass({
           selectedDate={this.state.date}
           onDateChange={this.onDateChange}
           screenWidth={Dimensions.get('window').width}
-          selectedBackgroundColor={'#5ce600'} />
+          selectedBackgroundColor={'#5ce600'} 
+          
+          withConfirmButton
+          onConfirm={this.onConfirm}
+          confirmButtonText={'Ok'}
+          confirmTextStyle={{color: '#ff0000',fontSize: 18}}
+          confirmButtonStyle={{backgroundColor: '#00ff00'}}/>
 
         <Text style={styles.selectedDate}> Date: { this.state.date.toString() } </Text>
       </View>
@@ -73,7 +83,11 @@ const styles = StyleSheet.create({
 | scaleFactor | float | Optional. Default scales to window width |
 | minDate | Date | Optional. Specifies minimum date to be selected |
 | maxDate | Date | Optional. Specifies maximum date to be selected |
-
+| withConfirmButton | boolean | Enable Confirm Button on bottom of the Calendar. |
+| onConfirm | func | Callback to OnPress of Buttom |
+| confirmButtonText | string | Title of confirm button |
+| confirmTextStyle | object | Style to confirm button Text |
+| confirmButtonStyle | object | Style to confirm btton Field |
 
 # To Do:
 
