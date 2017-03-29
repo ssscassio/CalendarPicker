@@ -124,9 +124,8 @@ function makeStyles(scaler) {
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'row',
-      padding:5,
-      height: 40,
-      flex:1
+      padding:5*scaler,
+      height: 40*scaler
     },
 
     confirmButton: {

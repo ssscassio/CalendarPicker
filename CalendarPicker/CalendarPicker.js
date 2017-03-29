@@ -481,47 +481,48 @@ var CalendarPicker = React.createClass({
 
   render() {
     return (
-      <View style={styles.calendar}>
-        <HeaderControls
-          maxDate={this.props.maxDate}
-          minDate={this.props.minDate}
-          year={this.state.year}
-          month={this.state.month}
-          onMonthChange={this.onMonthChange}
-          getNextYear={this.getNextYear}
-          getPrevYear={this.getPrevYear}
-          months={this.props.months}
-          previousTitle={this.props.previousTitle}
-          nextTitle={this.props.nextTitle}
-          textStyle={this.props.textStyle} />
+      <View>
+        <View style={styles.calendar}>
+          <HeaderControls
+            maxDate={this.props.maxDate}
+            minDate={this.props.minDate}
+            year={this.state.year}
+            month={this.state.month}
+            onMonthChange={this.onMonthChange}
+            getNextYear={this.getNextYear}
+            getPrevYear={this.getPrevYear}
+            months={this.props.months}
+            previousTitle={this.props.previousTitle}
+            nextTitle={this.props.nextTitle}
+            textStyle={this.props.textStyle} />
 
-        <WeekDaysLabels
-          screenWidth={this.props.screenWidth}
-          weekdays={this.props.weekdays}
-          textStyle={this.props.textStyle} />
+          <WeekDaysLabels
+            screenWidth={this.props.screenWidth}
+            weekdays={this.props.weekdays}
+            textStyle={this.props.textStyle} />
 
-        <Days
-          maxDate={this.props.maxDate}
-          minDate={this.props.minDate}
-          month={this.state.month}
-          year={this.state.year}
-          date={this.state.date}
-          onDayChange={this.onDayChange}
-          screenWidth={this.props.screenWidth}
-          startFromMonday={this.props.startFromMonday}
-          selectedDayColor={this.props.selectedDayColor}
-          selectedDayTextColor={this.props.selectedDayTextColor}
-          textStyle={this.props.textStyle} />
-
-          {this.props.withConfirmButton?
-            <ConfirmButton
-              buttonText={this.props.confirmButtonText}
-              onConfirm={this.onConfirm}
-              buttonTextStyle={this.props.confirmTextStyle}
-              buttonStyle={this.props.confirmButtonStyle}
-              />
-              :null
-          }
+          <Days
+            maxDate={this.props.maxDate}
+            minDate={this.props.minDate}
+            month={this.state.month}
+            year={this.state.year}
+            date={this.state.date}
+            onDayChange={this.onDayChange}
+            screenWidth={this.props.screenWidth}
+            startFromMonday={this.props.startFromMonday}
+            selectedDayColor={this.props.selectedDayColor}
+            selectedDayTextColor={this.props.selectedDayTextColor}
+            textStyle={this.props.textStyle} />
+        </View>
+            {this.props.withConfirmButton?
+              <ConfirmButton
+                buttonText={this.props.confirmButtonText}
+                onConfirm={this.onConfirm}
+                buttonTextStyle={this.props.confirmTextStyle}
+                buttonStyle={this.props.confirmButtonStyle}
+                />
+                :null
+            }
       </View>
     );
   }
